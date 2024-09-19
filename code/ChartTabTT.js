@@ -7,18 +7,25 @@ import { TabBar } from 'react-native-tab-view';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import CheckBox from '@react-native-community/checkbox';
 import VChart from './ChartTabDSView';
+import { useDispatch,useSelector } from 'react-redux';
+import { setTabIndex } from './reduxx/tabSlice6';
 import ViewPB from './HomeTab1View';
 const ThiTruong=()=>{
     const layout = useWindowDimensions();
   
-      const [index, setIndex] = React.useState(0);
-      const [routes] = React.useState([
-          { key: 'tsan', title: 'Tài sản' },
-          { key: 'giaongay', title: 'Giao ngay' },
-          { key: 'USDM', title: 'USDⓈ-M' },
-          { key: 'COIN', title: 'COIN-M' },
-          { key: 'quyenchon', title: 'Quyền chọn' },
-      ]);
+    const { index, routes } = useSelector(state => state.tab6);
+    const dispatch = useDispatch();
+
+    const handleIndexChange = (newIndex) => {
+        dispatch(setTabIndex(newIndex));
+    };
+      // const [routes] = React.useState([
+      //     { key: 'tsan', title: 'Tài sản' },
+      //     { key: 'giaongay', title: 'Giao ngay' },
+      //     { key: 'USDM', title: 'USDⓈ-M' },
+      //     { key: 'COIN', title: 'COIN-M' },
+      //     { key: 'quyenchon', title: 'Quyền chọn' },
+      // ]);
   
       const renderScene = SceneMap({
           tsan: TaiSan,
@@ -45,7 +52,7 @@ const ThiTruong=()=>{
         <TabView
         navigationState={{ index, routes }}
         renderScene={renderScene}
-        onIndexChange={setIndex}
+        onIndexChange={handleIndexChange}
         initialLayout={{ width: layout.width }}
         renderTabBar={renderTabBar}
       />

@@ -26,4 +26,6 @@ app.get('/api/coins', (req, res) => {
   updateAprValues();
   res.json(coins);
 });
-console.log(`Server is running on http://localhost:${port}`);
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
+});

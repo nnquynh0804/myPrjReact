@@ -5,7 +5,7 @@ import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icon from'react-native-vector-icons/Ionicons';
 import styles from './style';
-const BTN = ({ TYPEIC, nameIC, label,st,sz,srcI}) => {
+const BTN = ({ TYPEIC, nameIC}) => {
   const renderIcon = () => {
     switch(TYPEIC) {
       case 'MaterialCommunityIcons':
