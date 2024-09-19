@@ -16,14 +16,7 @@ const TabDS=()=>{
     const handleIndexChange = (newIndex) => {
         dispatch(setTab1Index(newIndex));
     };
-    // const [index, setIndex] = React.useState(0);
-    // const [routes] = React.useState([
-    //     { key: 'dsyeuthich', title: 'Danh sách yêu thích' },
-    //     { key: 'phobien', title: 'Phổ biến' },
-    //     { key: 'tanggia', title: 'Tăng giá' },
-    //     { key: 'giamgia', title: 'Giảm giá' },
-    // ]);
-
+    
     const renderScene = SceneMap({
         dsyeuthich: DSyeuThich,
         phobien: Phobien,
@@ -64,6 +57,7 @@ const DSyeuThich=()=>{
     );    
 }
 const Phobien=()=>{
+    const coins = useSelector(state => state.price);
     const [isVisible,SetIsVisible] = useState(false);
     const toggleVisibility = () => {
         SetIsVisible(!isVisible);
@@ -81,12 +75,21 @@ const Phobien=()=>{
                     </View>
                 </View>
             </View>
-            <ViewPB name= "BNB"  name1 ="BNBUSDT" change={6.61} icon="fire-flame-simple"></ViewPB>
-            <ViewPB name= "BTC" name1 ="BTCUSDT" change={3.40} icon="fire-flame-simple"></ViewPB>
-            <ViewPB name= "ETH" name1 ="ETHUSDT" change={-4.93} icon="fire-flame-simple"></ViewPB>
-            <ViewPB name= "PEPE" name1 ="PEPEUSDT" change={16.62} ></ViewPB>
-            <ViewPB name= "SOL" name1 ="SOLUSDT" change={12.67} ></ViewPB>
-            <ViewPB name= "BOME" name1 ="BOMEUSDT" change={10.87} ></ViewPB>
+                {/* <ViewPB name= "BNB"  name1 ="BNBUSDT" change={6.61} icon="fire-flame-simple"></ViewPB>
+                <ViewPB name= "BTC" name1 ="BTCUSDT" change={3.40} icon="fire-flame-simple"></ViewPB>
+                <ViewPB name= "ETH" name1 ="ETHUSDT" change={-4.93} icon="fire-flame-simple"></ViewPB>
+                <ViewPB name= "PEPE" name1 ="PEPEUSDT" change={16.62} ></ViewPB>
+                <ViewPB name= "SOL" name1 ="SOLUSDT" change={12.67} ></ViewPB>
+                <ViewPB name= "BOME" name1 ="BOMEUSDT" change={10.87} ></ViewPB> */}
+                {coins.map((coin, index) => (
+                    <ViewPB
+                    key={index}
+                    name={coin.name}
+                    name1={coin.name1}
+                    change={coin.change}
+                    icon={coin.icon}
+                    />
+                ))}
             <View>
                 <TouchableOpacity onPress={toggleVisibility}>
                     {isVisible &&

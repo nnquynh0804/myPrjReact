@@ -63,6 +63,7 @@ const KhamPha=()=>{
     );    
 }
 const ViewBL1=()=>{
+    const btns = useSelector(state => state.btn);
     return(
         <View style={{borderWidth:1,borderColor:'rgba(0,0,0,0.02)'}}>
             <AVA name="Richard Teng" src={require('../img/richard-teng.jpg')} time="21 giờ"></AVA>
@@ -76,16 +77,26 @@ const ViewBL1=()=>{
                 </Text>
             </View>
             <View style={{flexDirection:'row',justifyContent:'space-between',marginLeft:10,marginRight:10}}>
-                <BTNKP TYPEIC="FontAwesome6" nameIC="chart-simple" label="863.7K"></BTNKP>
+                {/* <BTNKP TYPEIC="FontAwesome6" nameIC="chart-simple" label="863.7K"></BTNKP>
                 <BTNKP nameIC="comment-text" label="103"></BTNKP>
                 <BTNKP TYPEIC="AntDesign" nameIC="like1" label="457"></BTNKP>
                 <BTNKP TYPEIC="FontAwesome6" nameIC="retweet" label="8"></BTNKP>
-                <BTNKP nameIC="share" label="69"></BTNKP>
+                <BTNKP nameIC="share" label="69"></BTNKP> */}
+                {btns.map((btn, index) => (
+                    <BTNKP
+                    key={index}
+                    TYPEIC={btn.TYPEIC}
+                    nameIC={btn.nameIC}
+                    label={btn.label}
+                    />
+                ))}
+                
             </View>
         </View>  
         );
 }
 const ViewBL2=()=>{
+    const btns = useSelector(state => state.btn);
     return(
         <View style={{borderWidth:1,borderColor:'rgba(0,0,0,0.02)'}}>
             <AVA name="MrHai-TGPMedia" src={require('../img/dog.jpg')} time="4 th 8"></AVA>
@@ -96,11 +107,14 @@ const ViewBL2=()=>{
                 </Text>
             </View>
             <View style={{flexDirection:'row',justifyContent:'space-between',marginLeft:10,marginRight:10}}>
-            <BTNKP TYPEIC="FontAwesome6" nameIC="chart-simple" label="863.7K"></BTNKP>
-                <BTNKP nameIC="comment-text" label="103"></BTNKP>
-                <BTNKP TYPEIC="AntDesign" nameIC="like1" label="457"></BTNKP>
-                <BTNKP TYPEIC="FontAwesome6" nameIC="retweet" label="8"></BTNKP>
-                <BTNKP nameIC="share" label="69"></BTNKP>
+            {btns.map((btn, index) => (
+                    <BTNKP
+                    key={index}
+                    TYPEIC={btn.TYPEIC}
+                    nameIC={btn.nameIC}
+                    label={btn.label}
+                    />
+                ))}
             </View>
         </View>  
         );
